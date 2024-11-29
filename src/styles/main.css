@@ -1,0 +1,135 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #fc1e8a;
+    user-select: none;
+
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background: linear-gradient(
+        325deg, #03001e 0%, #7303c0 30%, #ec38bc 70%, #fdeff9 100%
+    );
+    padding: 40px 60px;
+}
+
+h2 {
+    font-size: 3em;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.reset {
+    padding: 15px 20px;
+    width: 100%;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.reset:focus {
+color: #ec38bc;
+background-color: #262809;
+}
+
+.game {
+    width: 430px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF;
+    
+    font-size: 3em;
+    transform: rotateY(180deg);
+    transition: 0.25s;
+}
+
+.item::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #404040;
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.item.boxOpen {
+    transform: rotateY(0deg);
+}
+
+.boxOpen::after, .boxMatch::after {
+    transform: rotateY(180deg);
+}
+
+.theme-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3vh;
+}
+
+.theme-selector button {
+    padding: 10px 15px;
+    font-size: 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.theme-selector button:hover {
+    background-color: #ec38bc;
+    color: #fff;
+}
+
+/* Animação de expansão para as cartas */
+.cardAnimation {
+    animation: cardBounce 1s ease-in-out;
+}
+
+@keyframes cardBounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Efeito de partículas (simples) */
+.cardMatch .boxOpen {
+    background-color: #FFD700;
+    box-shadow: 0px 0px 10px 5px rgba(255, 215, 0, 0.8);
+}
